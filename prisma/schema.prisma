@@ -6,9 +6,82 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Role {
+  user
+  admin
+}
+
+enum status {
+  pending
+  success
+  done
+}
+
+enum JK {
+  pria
+  wanita
+  kosong
+}
+
 model Users {
   id      Int      @id @default(autoincrement())
   email   String   @unique
-  name    String?
-  title    String?
+  password String
+  fullname String
+  photo String?
+  role Role     @default(user)
+  createdAt DateTime  @default(now()) @db.Timestamp(3)
+  users Workshop[]
 }
+
+model Tari {
+  id Int @id @default(autoincrement())
+  nama_tari String
+  asal_tari String
+  deskripsi String
+  url_gambar String
+  url_video String
+  createdAt DateTime  @default(now()) @db.Timestamp(3)
+}
+
+model Workshop {
+  id Int @id @default(autoincrement())
+  paket  Paket  @relation(fields: [paketId], references: [id])
+  paketId Int
+  users  Users  @relation(fields: [userId], references: [id])
+  userId Int
+  nama_workshop String
+  nama_sanggar String
+  alamat String
+  email String
+  phone String
+  nama_pemilik String
+  deskripsi String
+  photo String
+  price String
+  status status @default(pending)
+  bukti_pembayaran String
+  createdAt DateTime  @default(now()) @db.Timestamp(3)
+  workshop Pendaftaran_workshop[]
+}
+
+model Paket {
+  id Int @id @default(autoincrement())
+  nama_paket String
+  price Float
+  createdAt DateTime  @default(now()) @db.Timestamp(3)
+  paket Workshop[]
+}
+
+model Pendaftaran_workshop {
+  id Int @id @default(autoincrement())
+  workshop  Workshop  @relation(fields: [workshopId], references: [id])
+  workshopId Int
+  nama String
+  phone String
+  email String
+  umur String
+  jenis_kelamin JK @default(kosong)
+}
+
+
