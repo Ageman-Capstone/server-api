@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ageman",
+  "private_key_id": "e519ee8663e5b489b593f2c1e0d9ce3812478fd1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDDPV74hC1n3yyv\nbEpW/FI/Chor6VqLQiG/pmFqKTrOgNl+d6xJ0bBb7nfFLBmJ75sDRJQuqBv+z1+N\nA+L/DoOVHdUwqJ3zZCEmjX5mm6d9b0D/nEZMhLijGNMQIRfgecbUHqt8c+QBzZut\n1ruEQI67J38NNv/w77Seuifjv3abQfDQTHi8D5fsmB9Yc4X0nCbURj4ViZFdZpnc\nSMWAXNZbT7iCV3Fnnp98TANk6CfnMjU+bLGg3LLVXJDUMKnMh2doYhdKJp0raMmk\nQRZIXKqJnG4EMgZJeQ+weACAJeF024ojnyWH/RjmI2R+o7sQidHvfY9uCT5w52+C\nRqlgoGa7AgMBAAECggEAWwDaqSTXE0ELz5K+ze/bmEWpsEkbaqi/GVlAs96W6hVW\nC2RVuqzSMu+jBRVKrCgyjWHkXiD+t5VKeOzUXEWUIKfgrMcTpJTJ/PHb9pDcD5QR\nbHOXsuf0NhWGn9CFFB0/B7VqAl70asC/LVbXXcxHm0XMK0k1IEVi389uc3JVowTX\na5tC+xkvk3vWxYX3JPeUA9Z5rr75GOQ2XqEaTCFC2m9amOu+1l04nL+XJOQ0MJjX\nSWGZF+E7BvI/OH39XCc1J2JEaR6QM9VO3EvgCH0MnxBRBtKwDzcAXl8JZzcfKo+L\nbvuGPLEjO6ryzkHQ8vKy1oiZDkwZjCdbTrLFxnj8NQKBgQDmYjs0QP84rv2/3EHr\nBsDD6YnonuFHh6WkHP8zvwRqFZYpHflKUYSQ717bSIQou/YOoGyxkSaeJvj2c2hk\niqCSmOaQG1CldbOSUo7SfzsOzng0PqnwVZO1q5dMVA6A1Fx6q9UF7FZG5II/k9bq\nfRycIn521y69ggf0fAzq3GEeNQKBgQDY8sgwlBYemNl0SVKjqGpJ+kO+eN5VulbB\n227jSlKJLcr7kWr7G/v8+iErpLUTjCdn+mptXwZWHSNJTMoD0FJZYQ4F8QbFtpeH\n94nCdNhFRhWwanOiZ5p8Fh8GxpALIxT+efkV2OR0XZG4Zud84PK7h2bsla/2Pm7a\nRWz0/cPPLwKBgQDSIOB9DZd7nOgmmX+qHROu3RCDEn7JXiivYh9GlEAzfhLi18rr\nhSSTiTCMczzPZnjL6HibEJgXgdZr+uFJasOAUmNhJvjMoWky2YgY6CD2pU0v4cPg\nSD2cYrBx1u0PhiH/ZUC70U70BDHkSTSp1YlFw5RzUlr4UGRvEsI5aN5PzQKBgQDP\nHrpQ5pBXlcXFZ1smM9uF1RBoAC0D22qImV48UPCLVtS7aBGiuwzQcFzKtezKRLw6\nYLDKyjXacOcHS/Bxw6la+3XP5lR43eG9RW6X38W6HTcHvhm3qwGqBdSJO3i5qTyZ\n1wke+nrhPZOpYVUPvBMBRjvVEvNzPBfI+w8StlMCsQKBgQC0JmMIhcAMapHNXesN\nwThu7A9Ztz+0i8mPxKG1zXC+73OeiNgAcY4WR0qop6YeS+kAUtYXjAQDYvysAhRb\ngntFPCgbhDAi/VnfbcZyuqynZySrfjxvnI+Kz+UJ1VLZA+M8X5q44ADg79GVwQtn\nghCeJFmyhzZu1B6Glr/5kdmPBw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "agemstorage@ageman.iam.gserviceaccount.com",
+  "client_id": "107601688266327400617",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/agemstorage%40ageman.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

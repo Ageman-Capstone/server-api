@@ -37,6 +37,7 @@ model Users {
 model Tari {
   id Int @id @default(autoincrement())
   nama_tari String
+  slug String @unique
   asal_tari String
   deskripsi String
   url_gambar String
