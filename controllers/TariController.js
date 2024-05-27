@@ -50,7 +50,6 @@ class TariController {
           slug:`${slugify(nama_tari, { lower: true })}`
         },
       });
-     console.log(result);
       return res.status(201).json({result:"success", message:"Success Create Data Tari"});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -79,8 +78,7 @@ class TariController {
         },
       });
 
-      console.log(results);
-      return res.status(201).json({result:"success", message:"Success Create Data Tari"});
+      return res.status(201).json({result:"success", message:"Success Update Data Tari"});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         handlePrismaError(res, error);
