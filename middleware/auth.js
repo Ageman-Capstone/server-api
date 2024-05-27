@@ -5,6 +5,7 @@ function authentication(req, res, next) {
 
   if (authorization) {
     const token = authorization.split(' ')[1];
+
     req.loggedUser = decodeToken(token);
     next();
   } else {
