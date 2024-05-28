@@ -69,7 +69,7 @@ model Workshop {
 model Paket {
   id Int @id @default(autoincrement())
   nama_paket String
-  price Float
+  price Decimal
   createdAt DateTime  @default(now()) @db.Timestamp(3)
   paket Workshop[]
 }

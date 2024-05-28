@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const multer = require('multer');
 const UserController = require('../controllers/UserController');
-const { authentication } = require('../middleware/auth.js');
+const { authentication,adminAuthorization } = require('../middleware/auth.js');
 const { imageUpload } = require('../middleware/upload');
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -17,7 +17,6 @@ router.put(
   imageUpload,
   UserController.update
 );
-// router.delete('/user/:id', adminAuthorization, UserController.destroy);
-router.delete('/user/:id', UserController.destroy);
+router.delete('/user/:id', adminAuthorization, UserController.destroy);
 
 module.exports = router;
