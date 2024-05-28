@@ -3,17 +3,16 @@ const slugify = require('slugify');
 const prisma = new PrismaClient();
 const {handlePrismaError} =  require("../validators/prismaValidator");
 
-class TariController {
+class PaketController {
 
   static async list(req, res) {
     const query = req.query;
 
-    const result = await prisma.tari.findMany({
+    const result = await prisma.paket.findMany({
       where: {
-        nama_tari: {
+        paket: {
           search: query.search?.split(' ').join(' | '),
         },
-        asal_tari: query.asalTari,
       },
     })
 
@@ -21,11 +20,11 @@ class TariController {
   }
 
   static async show(req, res) {
-    const slug = req.params.slug;
+    const id = parseInt(req.params.id);
 
-    const result = await prisma.tari.findUnique({
+    const result = await prisma.paket.findUnique({
       where: {
-        slug: slug
+        id: id
       },
     })
 
@@ -38,19 +37,15 @@ class TariController {
   }
 
   static async create(req, res){
-    const { nama_tari, asal_tari, url_gambar,deskripsi,url_video } = req.body;
+    const { nama_paket, price} = req.body;
     try {
-      const result = await prisma.tari.create({
+      const result = await prisma.paket.create({
         data: {
-          nama_tari: nama_tari,
-          asal_tari: asal_tari, 
-          deskripsi: deskripsi,
-          url_gambar:url_gambar ,
-          url_video:url_video,
-          slug:`${slugify(nama_tari, { lower: true })}`
+          nama_paket: nama_paket,
+          price: parseInt(price), 
         },
       });
-      return res.status(201).json({result:"success", message:"Success Create Data Tari"});
+      return res.status(201).json({result:"success", message:"Success Create Data Paket"});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         handlePrismaError(res, error);
@@ -60,25 +55,21 @@ class TariController {
 
   static async update(req, res){
 
-    const { nama_tari, asal_tari, url_gambar,deskripsi,url_video } = req.body;
+    const { nama_paket, price} = req.body;
     const id = req.params.id;
 
     try {
-      const results = await prisma.tari.update({
+      const results = await prisma.paket.update({
         where: {
           id: parseInt(id),
         },
         data: {
-          nama_tari: nama_tari,
-          asal_tari: asal_tari, 
-          deskripsi: deskripsi,
-          url_gambar:url_gambar,
-          url_video:url_video,
-          slug:`${slugify(nama_tari, { lower: true })}`
+          nama_paket: nama_paket,
+          price: parseInt(price), 
         },
       });
 
-      return res.status(201).json({result:"success", message:"Success Update Data Tari"});
+      return res.status(201).json({result:"success", message:"Success Update Data Paket"});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         handlePrismaError(res, error);
@@ -90,7 +81,7 @@ class TariController {
     const id = req.params.id;
 
     try {
-      await prisma.tari.delete({
+      await prisma.paket.delete({
         where: {
           id: parseInt(id),
         },
@@ -105,4 +96,4 @@ class TariController {
 
 }
 
-module.exports = TariController;
+module.exports = PaketController;

@@ -16,7 +16,7 @@ function authentication(req, res, next) {
 function adminAuthorization(req, res, next) {
   const loggedUser = req.loggedUser;
 
-  if (loggedUser.role === 'ADMIN') {
+  if (loggedUser.role === 'admin') {
     next();
   } else {
     res.status(403).json({ message: 'Forbidden access' });

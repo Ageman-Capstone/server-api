@@ -1,4 +1,7 @@
 const { PrismaClient, Prisma } = require('@prisma/client');
+const { generateHash } = require('../helpers/bcrypt');
+const { handlePrismaError } = require('../validators/prismaValidator');
+
 const prisma = new PrismaClient();
 
 class UserController {
@@ -12,15 +15,55 @@ class UserController {
       },
     })
 
-
     if (result) {
       res.status(200).json(result);
     } else {
       res.status(404).json({ message: 'Data not found' });
     }
-
   }
 
+  static async update(req, res, next)
+  {
+    const { email, password, fullname,url_gambar} = req.body;
+    const id = req.params.id;
+    let passwordHash = undefined;
+    if(password){
+      passwordHash = generateHash(password);
+    }
+
+    try {
+      const results = await prisma.users.update({
+        where: {
+          id: parseInt(id),
+        },
+        data: {
+          email: email,
+          password: password ? passwordHash  : undefined, 
+          fullname: fullname,
+          photo: req.file ? url_gambar :  undefined,
+        },
+      });
+
+      return res.status(201).json({result:"success", message:"Success Update Data Tari"});
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        handlePrismaError(res, error);
+      }
+    }
+  }
+
+  static async destroy(req, res,next){
+    try {
+      await prisma.users.delete({
+        where: {
+          id: parseInt(req.params.id),
+        },
+      });
+      res.status(200).json({ message: 'Delete success' });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = UserController;
