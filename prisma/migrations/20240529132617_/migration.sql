@@ -4,7 +4,7 @@ CREATE TABLE `Users` (
     `email` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `fullname` VARCHAR(191) NOT NULL,
-    `photo` VARCHAR(191) NOT NULL,
+    `photo` VARCHAR(191) NULL,
     `role` ENUM('user', 'admin') NOT NULL DEFAULT 'user',
     `createdAt` TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
@@ -16,12 +16,14 @@ CREATE TABLE `Users` (
 CREATE TABLE `Tari` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nama_tari` VARCHAR(191) NOT NULL,
+    `slug` VARCHAR(191) NOT NULL,
     `asal_tari` VARCHAR(191) NOT NULL,
     `deskripsi` VARCHAR(191) NOT NULL,
     `url_gambar` VARCHAR(191) NOT NULL,
     `url_video` VARCHAR(191) NOT NULL,
     `createdAt` TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
+    UNIQUE INDEX `Tari_slug_key`(`slug`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -38,7 +40,7 @@ CREATE TABLE `Workshop` (
     `nama_pemilik` VARCHAR(191) NOT NULL,
     `deskripsi` VARCHAR(191) NOT NULL,
     `photo` VARCHAR(191) NOT NULL,
-    `price` VARCHAR(191) NOT NULL,
+    `price` DOUBLE NOT NULL,
     `status` ENUM('pending', 'success', 'done') NOT NULL DEFAULT 'pending',
     `bukti_pembayaran` VARCHAR(191) NOT NULL,
     `createdAt` TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

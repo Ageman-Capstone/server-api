@@ -12,9 +12,8 @@ const upload = multer({
 router.use(authentication);
 router.get('/tari', TariController.list);
 router.get('/tari/:slug', TariController.show);
-router.use(adminAuthorization);
-router.post('/tari/store', upload.single('url_gambar'), imageUpload,TariController.create);
-router.put('/tari/:id', upload.single('url_gambar'), imageUpload,TariController.update);
-router.delete('/tari/:id', TariController.destroy);
+router.post('/tari/store', adminAuthorization,upload.single('url_gambar'), imageUpload,TariController.create);
+router.put('/tari/:id', adminAuthorization, upload.single('url_gambar'), imageUpload,TariController.update);
+router.delete('/tari/:id',adminAuthorization, TariController.destroy);
 
 module.exports = router;

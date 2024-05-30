@@ -6,9 +6,8 @@ const router = Router();
 router.use(authentication);
 router.get('/paket', PaketController.list);
 router.get('/paket/:id', PaketController.show);
-router.use(adminAuthorization);
-router.post('/paket',PaketController.create);
-router.put('/paket/:id',PaketController.update);
-router.delete('/paket/:id', PaketController.destroy);
+router.post('/paket',adminAuthorization,PaketController.create);
+router.put('/paket/:id',adminAuthorization,PaketController.update);
+router.delete('/paket/:id',adminAuthorization, PaketController.destroy);
 
 module.exports = router;

@@ -18,13 +18,14 @@ router.post('/workshop',
   imageMultipleUpload, 
   WorkshopController.create);
 
-router.use(adminAuthorization);
+// router.use(adminAuthorization);
 router.put(
   '/workshop/:id',
+  adminAuthorization,
   upload.fields([{name:'url_gambar', maxCount: 1}, {name:'bukti_pembayaran', maxCount: 1}]), 
-  imageMultipleUpload, 
+  imageMultipleUpload,
   WorkshopController.update
 );
-router.delete('/workshop/:id', WorkshopController.destroy);
+router.delete('/workshop/:id', adminAuthorization,WorkshopController.destroy);
 
 module.exports = router;
