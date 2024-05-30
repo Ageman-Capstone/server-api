@@ -2,14 +2,15 @@ function handlePrismaError(res, err) {
   switch (err.code) {
     case 'P2002':
       // handling duplicate key errors
+      console.log(err.meta);
       return res.status(400).json({
-        field: err.meta.target[0],
+        field: err.meta.target,
         message: 'Duplicate field value',
       });
     case 'P2014':
       // handling invalid id errors
       return res.status(400).json({
-        field: err.meta.target[0],
+        field: err.meta.target,
         message: 'Invalid ID',
       });
     case 'P2003':
