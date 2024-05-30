@@ -44,7 +44,7 @@ class UserController {
         },
       });
 
-      return res.status(201).json({result:"success", message:"Success Update Data Tari"});
+      return res.status(201).json({result:"success", message:"Success Update Data User"});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         handlePrismaError(res, error);
