@@ -59,7 +59,7 @@ model Workshop {
   nama_pemilik String
   deskripsi String
   photo String
-  price String
+  price Float
   status status @default(pending)
   bukti_pembayaran String
   createdAt DateTime  @default(now()) @db.Timestamp(3)
@@ -69,7 +69,7 @@ model Workshop {
 model Paket {
   id Int @id @default(autoincrement())
   nama_paket String
-  price Decimal
+  price Float
   createdAt DateTime  @default(now()) @db.Timestamp(3)
   paket Workshop[]
 }
