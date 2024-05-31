@@ -21,13 +21,14 @@ class AuthController {
           return res.status(200).json({
             user: {
               id: user.id,
-              name: user.name,
               email: user.email,
+              fullname: user.fullname,
+              photo: user.photo,
               role: user.role,
             },
             token: generateToken({
               id: user.id,
-              name: user.name,
+              fullname: user.fullname,
               email: user.email,
               role: user.role,
             }),
