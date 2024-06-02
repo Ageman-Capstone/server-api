@@ -44,7 +44,11 @@ class UserController {
         },
       });
 
-      return res.status(201).json({result:"success", message:"Success Update Data User"});
+      const user = await prisma.users.findUnique({
+        where: { id: parseInt(id), },
+      });
+
+      return res.status(201).json({result:"success", message:"Success Update Data User", data: user});
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         handlePrismaError(res, error);
