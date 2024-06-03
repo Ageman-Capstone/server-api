@@ -1,4 +1,4 @@
-const { PrismaClient, Prisma } = require('@prisma/client');
+const { PrismaClient, Prisma, status } = require('@prisma/client');
 const slugify = require('slugify');
 const prisma = new PrismaClient();
 const {handlePrismaError} =  require("../validators/prismaValidator");
@@ -95,7 +95,7 @@ class WorkshopController {
 
   static async update(req, res){
 
-    const { paketId, userId, nama_workshop, nama_sanggar,alamat,email,phone,nama_pemilik,deskripsi,url_gambar,price,bukti_pembayaran } = req.body;
+    const { paketId, userId, nama_workshop, nama_sanggar,alamat,email,phone,nama_pemilik,deskripsi,url_gambar,price,bukti_pembayaran,status } = req.body;
     const id = req.params.id;
 
     try {
@@ -104,19 +104,19 @@ class WorkshopController {
           id: parseInt(id),
         },
         data: {
-          paketId:parseInt(paketId),
-          userId:parseInt(userId),
-          nama_workshop:nama_workshop,
-          nama_sanggar:nama_sanggar,
-          alamat:alamat,
-          email:email,
-          phone:phone,
-          nama_pemilik:nama_pemilik,
-          deskripsi:deskripsi,
-          photo:url_gambar, //gambar  workshop
-          price:parseInt(price),
-          status:"pending",
-          bukti_pembayaran:bukti_pembayaran
+          paketId:parseInt(paketId) ? parseInt(paketId) : undefined,
+          userId: parseInt(userId) ? parseInt(userId) : undefined,
+          nama_workshop:nama_workshop ? nama_workshop: undefined ,
+          nama_sanggar:nama_sanggar ? nama_sanggar: undefined ,
+          alamat:alamat ? alamat: undefined ,
+          email:email ? email: undefined ,
+          phone:phone ? phone: undefined ,
+          nama_pemilik:nama_pemilik ? nama_pemilik: undefined ,
+          deskripsi:deskripsi ? deskripsi: undefined ,
+          photo:url_gambar ? url_gambar: undefined , //gambar  workshop
+          price: price ? parseInt(price): undefined ,
+          status: status ? status : undefined,
+          bukti_pembayaran:bukti_pembayaran ?  bukti_pembayaran  :  undefined
         },
       });
 

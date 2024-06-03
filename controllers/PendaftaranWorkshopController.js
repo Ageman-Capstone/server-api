@@ -96,12 +96,12 @@ class PendaftaranWorkshopController {
           id: parseInt(id),
         },
         data: {
-          workshopId:parseInt(workshopId),
-          nama:nama,
-          email:email,
-          phone:phone,
-          umur:umur,
-          jenis_kelamin:jenis_kelamin,
+          workshopId: parseInt(workshopId) ? parseInt(workshopId) : undefined,
+          nama:nama ? nama : undefined,
+          email:email ? email : undefined,
+          phone:phone ? phone : undefined,
+          umur:umur ? umur : undefined,
+          jenis_kelamin:jenis_kelamin ? jenis_kelamin : undefined,
         },
       });
 

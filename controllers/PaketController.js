@@ -64,8 +64,8 @@ class PaketController {
           id: parseInt(id),
         },
         data: {
-          nama_paket: nama_paket,
-          price: parseInt(price), 
+          nama_paket: nama_paket ? nama_paket : undefined, 
+          price: price ? parseInt(price) : undefined, 
         },
       });
 

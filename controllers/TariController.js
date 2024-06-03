@@ -69,12 +69,12 @@ class TariController {
           id: parseInt(id),
         },
         data: {
-          nama_tari: nama_tari,
-          asal_tari: asal_tari, 
-          deskripsi: deskripsi,
-          url_gambar:url_gambar,
-          url_video:url_video,
-          slug:`${slugify(nama_tari, { lower: true })}`
+          nama_tari: nama_tari ? nama_tari: undefined ,
+          asal_tari: asal_tari ? asal_tari: undefined , 
+          deskripsi: deskripsi ? deskripsi: undefined ,
+          url_gambar:url_gambar ? url_gambar: undefined ,
+          url_video:url_video ? url_video: undefined ,
+          slug: nama_tari  ? `${slugify(nama_tari, { lower: true })}` : undefined 
         },
       });
 

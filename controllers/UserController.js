@@ -37,9 +37,9 @@ class UserController {
           id: parseInt(id),
         },
         data: {
-          email: email,
+          email: email ? email : undefined,
           password: password ? passwordHash  : undefined, 
-          fullname: fullname,
+          fullname: fullname ? fullname: undefined ,
           photo: req.file ? url_gambar :  undefined,
         },
       });
