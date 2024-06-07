@@ -11,7 +11,7 @@ class TariController {
     const result = await prisma.tari.findMany({
       where: {
         nama_tari: {
-          search: query.search?.split(' ').join(' | '),
+          search: query.search,
         },
         asal_tari: query.asalTari,
       },

@@ -3,7 +3,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 enum Role {
@@ -43,6 +44,8 @@ model Tari {
   url_gambar String
   url_video String
   createdAt DateTime  @default(now()) @db.Timestamp(3)
+
+  @@fulltext([nama_tari, asal_tari])
 }
 
 model Workshop {
@@ -64,6 +67,8 @@ model Workshop {
   bukti_pembayaran String
   createdAt DateTime  @default(now()) @db.Timestamp(3)
   workshop Pendaftaran_workshop[]
+
+  @@fulltext([nama_workshop])
 }
 
 model Paket {
@@ -72,6 +77,8 @@ model Paket {
   price Float
   createdAt DateTime  @default(now()) @db.Timestamp(3)
   paket Workshop[]
+
+  @@fulltext([nama_paket])
 }
 
 model Pendaftaran_workshop {
@@ -83,6 +90,7 @@ model Pendaftaran_workshop {
   email String
   umur String
   jenis_kelamin JK @default(kosong)
+
 }
 
 

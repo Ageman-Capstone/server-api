@@ -1,4 +1,4 @@
-const { PrismaClient, Prisma, status } = require('@prisma/client');
+const { PrismaClient, Prisma } = require('@prisma/client');
 const slugify = require('slugify');
 const prisma = new PrismaClient();
 const {handlePrismaError} =  require("../validators/prismaValidator");
@@ -11,8 +11,10 @@ class WorkshopController {
     const result = await prisma.workshop.findMany({
       where: {
         nama_workshop: {
-          search: query.search?.split(' ').join(' | '),
+          search: query.search,
         },
+        userId: parseInt(query.userId) ? parseInt(query.userId)  : undefined  ,
+        status: query.status,
       },
       include: {
         paket: {

@@ -38,7 +38,7 @@ function imageMultipleUpload(req, res, next) {
 
   try {
     
-    if (req.files) {
+    if (req.files.url_gambar || req.files.bukti_pembayaran) {
       const url_gambar =  req.files.url_gambar[0];
       const bukti_pembayaran =  req.files.bukti_pembayaran[0];
 
