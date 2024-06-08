@@ -13,6 +13,13 @@ const router = Router();
 router.use(authentication);
 router.get('/workshop', WorkshopController.list);
 router.get('/workshop/:id', WorkshopController.show);
+
+router.put('/workshop/extend/:id',  
+  upload.fields([{name:'url_gambar', maxCount: 1}, {name:'bukti_pembayaran', maxCount: 1}]), 
+  imageMultipleUpload,
+  WorkshopController.extend
+);
+
 router.post('/workshop', 
   upload.fields([{name:'url_gambar', maxCount: 1}, {name:'bukti_pembayaran', maxCount: 1}]), 
   imageMultipleUpload, 

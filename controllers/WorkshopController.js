@@ -147,6 +147,40 @@ class WorkshopController {
     }
   }
 
+  static async extend(req, res){
+
+    const { paketId, nama_workshop, nama_sanggar,alamat,email,phone,nama_pemilik,deskripsi,url_gambar,price,bukti_pembayaran,status } = req.body;
+    const id = req.params.id;
+
+    try {
+      const results = await prisma.workshop.update({
+        where: {
+          id: parseInt(id),
+        },
+        data: {
+          paketId:parseInt(paketId) ? parseInt(paketId) : undefined,
+          nama_workshop:nama_workshop ? nama_workshop: undefined ,
+          nama_sanggar:nama_sanggar ? nama_sanggar: undefined ,
+          alamat:alamat ? alamat: undefined ,
+          email:email ? email: undefined ,
+          phone:phone ? phone: undefined ,
+          nama_pemilik:nama_pemilik ? nama_pemilik: undefined ,
+          deskripsi:deskripsi ? deskripsi: undefined ,
+          photo:url_gambar ? url_gambar: undefined , //gambar  workshop
+          price: price ? parseInt(price): undefined ,
+          status: "pending",
+          bukti_pembayaran:bukti_pembayaran ?  bukti_pembayaran  :  undefined
+        },
+      });
+
+      return res.status(201).json({result:"success", message:"Success Update Data Workshop"});
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        handlePrismaError(res, error);
+      }
+    }
+  }
+
 }
 
 module.exports = WorkshopController;

@@ -55,6 +55,13 @@ function imageMultipleUpload(req, res, next) {
         imagePathBukti_pembayaran = `images/buktiPembayaran/${user.id}_${nanoid(8)}_${
           bukti_pembayaran.originalname
         }`;
+      }else if (routePath === '/workshop/extend' || routePath === '/workshop/extend/:id') {
+        imagePathUrl_gambar = `images/workshop/update-${user.id}_${nanoid(8)}_${
+          url_gambar.originalname
+        }`;
+        imagePathBukti_pembayaran = `images/buktiPembayaran/update-${user.id}_${nanoid(8)}_${
+          bukti_pembayaran.originalname
+        }`;
       }
       bucket.file(imagePathUrl_gambar).save(url_gambar.buffer);
       bucket.file(imagePathBukti_pembayaran).save(bukti_pembayaran.buffer);
