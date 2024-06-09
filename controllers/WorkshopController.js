@@ -168,7 +168,7 @@ class WorkshopController {
           deskripsi:deskripsi ? deskripsi: undefined ,
           photo:url_gambar ? url_gambar: undefined , //gambar  workshop
           price: price ? parseInt(price): undefined ,
-          status: "pending",
+          status: status ? status : "pending",
           bukti_pembayaran:bukti_pembayaran ?  bukti_pembayaran  :  undefined
         },
       });
