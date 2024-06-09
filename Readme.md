@@ -14,11 +14,6 @@ git clone https://github.com/Ageman-Capstone/server-api.git
 npm install
 ```
 
-Notes:
-
-- Skip part no. 3 & 4 if you already have PostgreSQL setup in your computer
-- Or, if you prefer use Cloud SQL instance to store your data its fine
-
 3. Setup docker
 
 ```sh
