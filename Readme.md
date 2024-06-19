@@ -1,4 +1,4 @@
-# Ageman Server 🥗
+# Ageman Server
 
 ### Instalation and Usage Steps
 
