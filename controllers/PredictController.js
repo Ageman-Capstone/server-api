@@ -17,9 +17,7 @@ class PredictController {
     }
 
     try {
-      // const modelUrl = "https://storage.googleapis.com/submissionmlgc-purnamawahyup.appspot.com/submissions-model/model.json";
-      const modelUrl = "file://models/model.json";
-      // console.log(modelUrl);
+      const modelUrl = "https://storage.googleapis.com/ageman_bucket_1/models/model.json";
       const model = await tfjs.loadGraphModel(modelUrl);
       const tensor = tfjs.node
         .decodeJpeg(img)
@@ -36,17 +34,6 @@ class PredictController {
       const score = predictions.dataSync();
       const confidenceScore = Math.max(...score) * 100; // Mengubah confidence score ke persen
       const label = classes[classResult];
-
-      // if (label === 'Cancer') {
-      //   suggestion = "Segera periksa ke dokter!"
-      // }
-    
-      // if (label === 'Non-cancer') {
-      //   suggestion = "Anda sehat!"
-      // }
-
-      // const id = uuidv4();
-      // const createdAt = new Date().toISOString();
      
       const data = {
         "result": label,
