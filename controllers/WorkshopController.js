@@ -11,7 +11,7 @@ class WorkshopController {
     const result = await prisma.workshop.findMany({
       where: {
         nama_workshop: {
-          search: query.search,
+          contains: query.search,
         },
         userId: parseInt(query.userId) ? parseInt(query.userId)  : undefined  ,
         status: query.status,
@@ -131,12 +131,11 @@ class WorkshopController {
   }
 
   static async destroy(req, res) {
-    const id = req.params.id;
 
     try {
       await prisma.workshop.delete({
         where: {
-          id: parseInt(id),
+          id: parseInt(req.params.id),
         },
       });
       res.status(200).json({result:"success",message: 'Delete success' });
